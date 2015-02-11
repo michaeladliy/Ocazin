@@ -23,4 +23,11 @@
 {
     
 }
+
++(void)skipLoginToHomeFromNavigation : (UINavigationController*)currentNavigation
+{
+    // push navigation to home
+    
+ //   [currentNavigation pushViewController:<#(UIViewController *)#> animated:<#(BOOL)#>]
+}
 @end

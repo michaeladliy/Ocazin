@@ -15,8 +15,7 @@
 // Buttons
 @property (strong, nonatomic) IBOutlet UIButton *forgetPasswordBtn;
 @property (strong, nonatomic) IBOutlet UIButton *logInBtn;
-@property (strong, nonatomic) IBOutlet UIButton *registerBtn;
-@property (strong, nonatomic) IBOutlet UIButton *faceBookBtn;
+
 
 
 @end

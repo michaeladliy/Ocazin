@@ -12,22 +12,34 @@
 	<dict>
 		<key>038D719A86091A08585B871B8E145DFC65D93A97</key>
 		<string>https://github.com/HazemHamdyVL/Ocazzion.git</string>
+		<key>9425E797052FB9D439B2AFE8BDAFB66883F9A638</key>
+		<string>https://github.com/michaeladliy/Ocazin.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Ocazion.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>038D719A86091A08585B871B8E145DFC65D93A97</key>
+		<string>../../../Ocazzion</string>
+		<key>9425E797052FB9D439B2AFE8BDAFB66883F9A638</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/HazemHamdyVL/Ocazzion.git</string>
+	<string>https://github.com/michaeladliy/Ocazin.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>038D719A86091A08585B871B8E145DFC65D93A97</string>
+	<string>9425E797052FB9D439B2AFE8BDAFB66883F9A638</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9425E797052FB9D439B2AFE8BDAFB66883F9A638</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Ocazin</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

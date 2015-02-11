@@ -14,4 +14,5 @@
 @property (strong,nonatomic) NSString *email;
 @property (strong,nonatomic) NSString *mobileNo;
 @property (strong,nonatomic) NSString *imageURL;
+@property (strong,nonatomic)NSString *token;
 @end

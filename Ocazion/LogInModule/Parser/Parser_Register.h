@@ -8,19 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "UserDS.h"
-@interface Parser_Register : NSObject<NSXMLParserDelegate>
-{
-    NSString *currentNode ;
-    NSXMLParser *parser ;
-    BOOL connection ;
-}
+
+@protocol ParserRegisterDelegate <NSObject>
+
+-(void)registerParserDidFinishSuccessfullyWithUser:(UserDS *)user andMessage:(NSString *)messageCode;
+-(void)registerParserDidFinishWithValidationError:(NSArray*)validationErorrs;
+-(void)registerParserDidFinishWithError:(NSError *)connectionError;
+
+@end
+
+@interface Parser_Register : NSObject
+@property (weak) id delegate;
 @property (nonatomic,retain) NSString *messageCode;
 @property (nonatomic,retain) NSString *messageText;
 @property (nonatomic,retain) UserDS *user;
 
--(BOOL) connectToURL;
--(id)loadParserWithUsername:(NSString *)userName password:(NSString *)password email:(NSString*)email phoneNo:(NSString *)phoneNo imageString :(NSString *)imageString;
--(void)parser :(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict ;
--(void)parser :(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName ;
--(void)parser :(NSXMLParser *)parser foundCharacters:(NSString *)string ;
+-(id)loadParserWithFirstName:(NSString *)firstName lastName:(NSString*)lastName password:(NSString *)password email:(NSString*)email phoneNo:(NSString *)phoneNo imageString :(NSString *)imageString;
+
 @end

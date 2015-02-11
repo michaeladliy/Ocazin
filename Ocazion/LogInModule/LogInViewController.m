@@ -21,13 +21,16 @@
 #import "RegisterViewController.h"
 
 #import "UserDS.h"
+#import "ContainerScreen.h"
 
-@interface LogInViewController ()
-
+@interface LogInViewController ()<ParserLoginDelegate>
+{
+    Parser_Login  *loginParser;
+}
 @end
 
 @implementation LogInViewController
-@synthesize passwordTxtField,usernameTxtField,registerBtn,logInBtn,faceBookBtn,forgetPasswordBtn;
+@synthesize passwordTxtField,usernameTxtField,logInBtn,forgetPasswordBtn;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,13 +50,19 @@
     usernameTxtField =[usernameTxtField addPaddingToTextField:usernameTxtField];
 }
 // handle dismiss keyboard
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-}
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    [self.view endEditing:YES];
+//}
 
 
 // IBActions
+- (IBAction)skipToHome:(id)sender {
+    [StaticMethods skipLoginToHomeFromNavigation:self.navigationController];
+}
+- (IBAction)goBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)loginAction:(id)sender {
     if ([self validateInputsForLogin]) {
@@ -71,11 +80,15 @@
     
 }
 
+
+
+
 // validate username and password are required
 -(BOOL)validateInputsForLogin
 {
     validation *validate=[[validation alloc] init];
-    [validate Required:usernameTxtField.text FieldName:@"Username"];
+    [validate Required:usernameTxtField.text FieldName:@"Email"];
+    [validate Email:usernameTxtField.text FieldName:@"Email"];
     [validate Required:passwordTxtField.text FieldName:@"Password"];
     
     if([validate isValid] == TRUE){
@@ -97,7 +110,8 @@
     validation *validate=[[validation alloc] init];
     
     
-    [validate Required:usernameTxtField.text FieldName:@"Username"];
+    [validate Required:usernameTxtField.text FieldName:@"Email"];
+    [validate Email:usernameTxtField.text FieldName:@"Email"];
     
     if([validate isValid] == TRUE){
         return YES;
@@ -112,32 +126,50 @@
 
 -(void)loadLogInParser
 {
-    Parser_Login  *loginParser = [[Parser_Login alloc]init];
+    loginParser = [[Parser_Login alloc]init];
     [loginParser loadParserWithUsername:usernameTxtField.text password:passwordTxtField.text];
-    if ([loginParser connectToURL]) {
-        // Done
-        if ([loginParser.messageCode isEqualToString:@"200"]) {
-            [self loginParserDidFinishWithSuccessWithUser:loginParser.user];
-            // Move to Home Screen
-            //            [[MyPList alloc]write:@"UserID" value:[[objectLogin.arrLogin objectAtIndex:0] stLoginID]];
-            //            [[MyPList alloc]write:@"UserName" value:txtUsername.text];
-            //            [[MyPList alloc]write:@"firstTime" value:@"NO"];
-            //            HomeScreenView *home = [[HomeScreenView alloc]initWithNibName:@"HomeScreenView" bundle:nil];
-            //            [self.navigationController pushViewController:home animated:YES];
-        }
-        else {
-            // Not Right Result
-            [StaticMethods showAlertWithTitle:@"" message:loginParser.messageText delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil ];
-        }
-    }
-    else {
-        // Error in connection
-        [StaticMethods showAlertWithTitle:@"" message:@"Connection error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil ];
-    }
-    [StaticMethods removeLoadingView];
-    
+    loginParser.delegate=self;
 }
 
+// delegate methods for login
+-(void)loginParserDidFinishSuccessfullyWithUser:(UserDS *)user andMessage:(NSString *)messageCode
+{
+    if (user)
+    {
+        //succes with user
+        UIStoryboard *mainSB =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ContainerScreen *containerScreen = [mainSB instantiateViewControllerWithIdentifier:@"ContainerScreen"];
+//        [self presentViewController:containerScreen animated:YES completion:nil];
+        [self.navigationController pushViewController:containerScreen animated:YES];
+        
+    }else
+    {
+        // SHOW ERROR MESSAGE
+    [StaticMethods showAlertWithTitle:@"" message:messageCode delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+        
+    }
+    [StaticMethods removeLoadingView];
+}
+-(void)loginParserDidFinishWithValidationError:(NSArray *)validationErorrs
+{
+    NSString *allErrors = @"";
+    for (NSString *erorr in validationErorrs) {
+        allErrors= [allErrors stringByAppendingString:erorr];
+        allErrors= [allErrors stringByAppendingString:@"\n"];
+    }
+    NSLog(@"%@",allErrors);
+    [StaticMethods showAlertWithTitle:@"" message:allErrors delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+     [StaticMethods removeLoadingView];
+}
+
+-(void)loginParserDidFinishWithError:(NSError *)connectionError
+{
+    [StaticMethods showAlertWithTitle:@"" message:@"Connection Erorr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+    [StaticMethods removeLoadingView];
+}
+
+
+// forget password handle
 -(void)loadForgetPasswordParser
 {
     
@@ -151,24 +183,17 @@
         }
         else {
             // Not Right Result
-             [StaticMethods showAlertWithTitle:@"" message:forgetPasswordParser.messageText delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+            [StaticMethods showAlertWithTitle:@"" message:forgetPasswordParser.messageText delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
         }
     }
     else {
         // Error in connection
-         [StaticMethods showAlertWithTitle:@"" message:@"Connection error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+        [StaticMethods showAlertWithTitle:@"" message:@"Connection error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
     }
     [StaticMethods removeLoadingView];
- 
-}
-
-
-
--(void)loginParserDidFinishWithSuccessWithUser:(UserDS *)user
-{
-    // write here your code to be implemented after login
     
 }
+
 
 -(void)forgetPasswordParserDidFinishWithSuccess
 {
@@ -176,19 +201,6 @@
     [StaticMethods showAlertWithTitle:@"" message:@"Password will be sent to your email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
     
 }
-
- #pragma mark - Navigation
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
-     if ([segue.identifier isEqualToString:@"RegisterWithFacebook"])
-     {
-     RegisterViewController *registerVC= segue.destinationViewController;
-     registerVC.isFacebookRegister=YES;
-     }
- }
 
 
 @end

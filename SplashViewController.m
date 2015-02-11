@@ -8,6 +8,7 @@
 
 #import "SplashViewController.h"
 #import "LogInViewController.h"
+#import "ContainerScreen.h"
 
 @interface SplashViewController ()
 {
@@ -34,10 +35,14 @@
 }
 -(void)moveToLogin
 {
-    UIStoryboard *loginStoryboard=[UIStoryboard storyboardWithName:@"LogInModule" bundle:nil];
-    UINavigationController *loginNav = [loginStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
-    //LogInViewController *loginVC = [loginStoryboard instantiateViewControllerWithIdentifier:@"LogInViewController"];
-    [self presentViewController:loginNav animated:YES completion:nil];
+    ContainerScreen *containerScreen = [self.storyboard instantiateViewControllerWithIdentifier:@"ContainerScreen"];
+    //        [self presentViewController:containerScreen animated:YES completion:nil];
+    [self.navigationController pushViewController:containerScreen animated:YES];
+
+//    UIStoryboard *loginStoryboard=[UIStoryboard storyboardWithName:@"LogInModule" bundle:nil];
+//    UINavigationController *loginNav = [loginStoryboard instantiateViewControllerWithIdentifier:@"LoginNavigationController"];
+//    //LogInViewController *loginVC = [loginStoryboard instantiateViewControllerWithIdentifier:@"LogInViewController"];
+//    [self presentViewController:loginNav animated:YES completion:nil];
     
 }
 -(void)incrementPercentageValue

@@ -12,6 +12,7 @@
 
 @interface RegisterViewController : ViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 // TextField
+@property (weak, nonatomic) IBOutlet UITextField *lastName;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *phoneNoTxtField;
 @property (strong, nonatomic) IBOutlet UITextField *emailTxtField;

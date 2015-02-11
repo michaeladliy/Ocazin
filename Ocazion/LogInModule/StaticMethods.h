@@ -13,4 +13,5 @@
 +(void)showAlertWithTitle :(NSString*)title message:(NSString*)message delegate:(id)delegate cancelButtonTitle:(NSString*)cancelTitle otherButtonTitle:(NSString *)otherTitle;
 +(void)addLoadingView;
 +(void)removeLoadingView;
++(void)skipLoginToHomeFromNavigation : (UINavigationController*)currentNavigation;
 @end

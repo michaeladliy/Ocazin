@@ -28,6 +28,7 @@
 		02860DB81A7A2A140097B5EE /* addPhotoBtnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 02860DB61A7A2A140097B5EE /* addPhotoBtnImage.png */; };
 		02860DB91A7A2A140097B5EE /* signupBtnImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 02860DB71A7A2A140097B5EE /* signupBtnImage.png */; };
 		02860DC01A7A336F0097B5EE /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02860DBF1A7A336F0097B5EE /* SplashViewController.m */; };
+		02B37D6B1A88A4BA001F8032 /* PreLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B37D6A1A88A4BA001F8032 /* PreLoginViewController.m */; };
 		02D46B611A78E501003DD180 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D46B601A78E501003DD180 /* main.m */; };
 		02D46B641A78E501003DD180 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D46B631A78E501003DD180 /* AppDelegate.m */; };
 		02D46B671A78E501003DD180 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D46B661A78E501003DD180 /* ViewController.m */; };
@@ -35,6 +36,16 @@
 		02D46B6C1A78E501003DD180 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02D46B6B1A78E501003DD180 /* Images.xcassets */; };
 		02D46B6F1A78E501003DD180 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02D46B6D1A78E501003DD180 /* LaunchScreen.xib */; };
 		02D46B7B1A78E501003DD180 /* OcazionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D46B7A1A78E501003DD180 /* OcazionTests.m */; };
+		02D7C2F91A8A56C60001FF42 /* PaperFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C2F81A8A56C50001FF42 /* PaperFoldView.m */; };
+		02D7C2FD1A8A56FE0001FF42 /* ContainerScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C2FC1A8A56FE0001FF42 /* ContainerScreen.m */; };
+		02D7C3041A8A58C70001FF42 /* FacingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C2FF1A8A58C70001FF42 /* FacingView.m */; };
+		02D7C3051A8A58C70001FF42 /* MultiFoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C3011A8A58C70001FF42 /* MultiFoldView.m */; };
+		02D7C3061A8A58C70001FF42 /* TouchThroughUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C3031A8A58C70001FF42 /* TouchThroughUIView.m */; };
+		02D7C3091A8A58E90001FF42 /* ShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C3081A8A58E90001FF42 /* ShadowView.m */; };
+		02D7C30D1A8A59210001FF42 /* FoldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C30C1A8A59210001FF42 /* FoldView.m */; };
+		02D7C3101A8A59320001FF42 /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C30F1A8A59320001FF42 /* UIView+Screenshot.m */; };
+		02D7C3151A8A5A4F0001FF42 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C3141A8A5A4F0001FF42 /* HomeScreen.m */; };
+		02D7C3191A8A5A690001FF42 /* TopScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D7C3181A8A5A690001FF42 /* TopScreen.m */; };
 		4CB71E9B1A7F5BA90054845D /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CB71E9A1A7F5BA90054845D /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,8 +90,8 @@
 		02860D9C1A7A28340097B5EE /* StaticMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticMethods.h; sourceTree = "<group>"; };
 		02860D9D1A7A28340097B5EE /* StaticMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticMethods.m; sourceTree = "<group>"; };
 		02860D9E1A7A28340097B5EE /* String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = String.h; sourceTree = "<group>"; };
-		02860D9F1A7A28340097B5EE /* UITextField+PaddingTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PaddingTextFiled.h"; sourceTree = "<group>"; };
-		02860DA01A7A28340097B5EE /* UITextField+PaddingTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PaddingTextFiled.m"; sourceTree = "<group>"; };
+		02860D9F1A7A28340097B5EE /* UITextField+PaddingTextFiled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextField+PaddingTextFiled.h"; path = "../UITextField+PaddingTextFiled.h"; sourceTree = "<group>"; };
+		02860DA01A7A28340097B5EE /* UITextField+PaddingTextFiled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextField+PaddingTextFiled.m"; path = "../UITextField+PaddingTextFiled.m"; sourceTree = "<group>"; };
 		02860DA11A7A28340097B5EE /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
 		02860DA21A7A28340097B5EE /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		02860DB41A7A29F90097B5EE /* LogInModuleTxtFieldImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LogInModuleTxtFieldImage.png; sourceTree = "<group>"; };
@@ -88,6 +99,8 @@
 		02860DB71A7A2A140097B5EE /* signupBtnImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signupBtnImage.png; sourceTree = "<group>"; };
 		02860DBE1A7A336F0097B5EE /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashViewController.h; path = ../SplashViewController.h; sourceTree = "<group>"; };
 		02860DBF1A7A336F0097B5EE /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashViewController.m; path = ../SplashViewController.m; sourceTree = "<group>"; };
+		02B37D691A88A4BA001F8032 /* PreLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreLoginViewController.h; sourceTree = "<group>"; };
+		02B37D6A1A88A4BA001F8032 /* PreLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreLoginViewController.m; sourceTree = "<group>"; };
 		02D46B5B1A78E501003DD180 /* Ocazion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ocazion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D46B5F1A78E501003DD180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D46B601A78E501003DD180 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +114,27 @@
 		02D46B741A78E501003DD180 /* OcazionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OcazionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02D46B791A78E501003DD180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02D46B7A1A78E501003DD180 /* OcazionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OcazionTests.m; sourceTree = "<group>"; };
+		02D7C2F71A8A56C50001FF42 /* PaperFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldView.h; sourceTree = "<group>"; };
+		02D7C2F81A8A56C50001FF42 /* PaperFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaperFoldView.m; sourceTree = "<group>"; };
+		02D7C2FB1A8A56FE0001FF42 /* ContainerScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerScreen.h; sourceTree = "<group>"; };
+		02D7C2FC1A8A56FE0001FF42 /* ContainerScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerScreen.m; sourceTree = "<group>"; };
+		02D7C2FE1A8A58C70001FF42 /* FacingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacingView.h; sourceTree = "<group>"; };
+		02D7C2FF1A8A58C70001FF42 /* FacingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacingView.m; sourceTree = "<group>"; };
+		02D7C3001A8A58C70001FF42 /* MultiFoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiFoldView.h; sourceTree = "<group>"; };
+		02D7C3011A8A58C70001FF42 /* MultiFoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiFoldView.m; sourceTree = "<group>"; };
+		02D7C3021A8A58C70001FF42 /* TouchThroughUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchThroughUIView.h; sourceTree = "<group>"; };
+		02D7C3031A8A58C70001FF42 /* TouchThroughUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchThroughUIView.m; sourceTree = "<group>"; };
+		02D7C3071A8A58E90001FF42 /* ShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowView.h; sourceTree = "<group>"; };
+		02D7C3081A8A58E90001FF42 /* ShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowView.m; sourceTree = "<group>"; };
+		02D7C30A1A8A590A0001FF42 /* PaperFoldConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaperFoldConstants.h; sourceTree = "<group>"; };
+		02D7C30B1A8A59210001FF42 /* FoldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoldView.h; sourceTree = "<group>"; };
+		02D7C30C1A8A59210001FF42 /* FoldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoldView.m; sourceTree = "<group>"; };
+		02D7C30E1A8A59320001FF42 /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
+		02D7C30F1A8A59320001FF42 /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
+		02D7C3131A8A5A4F0001FF42 /* HomeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreen.h; sourceTree = "<group>"; };
+		02D7C3141A8A5A4F0001FF42 /* HomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreen.m; sourceTree = "<group>"; };
+		02D7C3171A8A5A690001FF42 /* TopScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopScreen.h; sourceTree = "<group>"; };
+		02D7C3181A8A5A690001FF42 /* TopScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopScreen.m; sourceTree = "<group>"; };
 		4CB71E9A1A7F5BA90054845D /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,10 +176,10 @@
 				02860D9C1A7A28340097B5EE /* StaticMethods.h */,
 				02860D9D1A7A28340097B5EE /* StaticMethods.m */,
 				02860D9E1A7A28340097B5EE /* String.h */,
-				02860D9F1A7A28340097B5EE /* UITextField+PaddingTextFiled.h */,
-				02860DA01A7A28340097B5EE /* UITextField+PaddingTextFiled.m */,
 				02860DA11A7A28340097B5EE /* UserProfileViewController.h */,
 				02860DA21A7A28340097B5EE /* UserProfileViewController.m */,
+				02B37D691A88A4BA001F8032 /* PreLoginViewController.h */,
+				02B37D6A1A88A4BA001F8032 /* PreLoginViewController.m */,
 			);
 			path = LogInModule;
 			sourceTree = "<group>";
@@ -153,6 +187,8 @@
 		02860D7F1A7A28340097B5EE /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				02860D9F1A7A28340097B5EE /* UITextField+PaddingTextFiled.h */,
+				02860DA01A7A28340097B5EE /* UITextField+PaddingTextFiled.m */,
 				02860D801A7A28340097B5EE /* TPKeyboardAvoiding */,
 				02860D891A7A28340097B5EE /* validation.h */,
 				02860D8A1A7A28340097B5EE /* validation.m */,
@@ -202,6 +238,10 @@
 		02D46B521A78E501003DD180 = {
 			isa = PBXGroup;
 			children = (
+				02D7C3161A8A5A540001FF42 /* Top */,
+				02D7C3121A8A5A3B0001FF42 /* Center */,
+				02D7C3111A8A593E0001FF42 /* PaperFold */,
+				02D7C2FA1A8A56D30001FF42 /* ContainerScreen */,
 				4CB71E9A1A7F5BA90054845D /* FacebookSDK.framework */,
 				02D46B5D1A78E501003DD180 /* Ocazion */,
 				02D46B771A78E501003DD180 /* OcazionTests */,
@@ -221,9 +261,9 @@
 		02D46B5D1A78E501003DD180 /* Ocazion */ = {
 			isa = PBXGroup;
 			children = (
+				02860D7C1A7A28340097B5EE /* LogInModule */,
 				02860DBE1A7A336F0097B5EE /* SplashViewController.h */,
 				02860DBF1A7A336F0097B5EE /* SplashViewController.m */,
-				02860D7C1A7A28340097B5EE /* LogInModule */,
 				02D46B621A78E501003DD180 /* AppDelegate.h */,
 				02D46B631A78E501003DD180 /* AppDelegate.m */,
 				02D46B651A78E501003DD180 /* ViewController.h */,
@@ -260,6 +300,55 @@
 				02D46B791A78E501003DD180 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02D7C2FA1A8A56D30001FF42 /* ContainerScreen */ = {
+			isa = PBXGroup;
+			children = (
+				02D7C2FB1A8A56FE0001FF42 /* ContainerScreen.h */,
+				02D7C2FC1A8A56FE0001FF42 /* ContainerScreen.m */,
+			);
+			name = ContainerScreen;
+			sourceTree = "<group>";
+		};
+		02D7C3111A8A593E0001FF42 /* PaperFold */ = {
+			isa = PBXGroup;
+			children = (
+				02D7C2F71A8A56C50001FF42 /* PaperFoldView.h */,
+				02D7C2F81A8A56C50001FF42 /* PaperFoldView.m */,
+				02D7C3071A8A58E90001FF42 /* ShadowView.h */,
+				02D7C3081A8A58E90001FF42 /* ShadowView.m */,
+				02D7C30B1A8A59210001FF42 /* FoldView.h */,
+				02D7C30C1A8A59210001FF42 /* FoldView.m */,
+				02D7C2FE1A8A58C70001FF42 /* FacingView.h */,
+				02D7C2FF1A8A58C70001FF42 /* FacingView.m */,
+				02D7C3001A8A58C70001FF42 /* MultiFoldView.h */,
+				02D7C3011A8A58C70001FF42 /* MultiFoldView.m */,
+				02D7C3021A8A58C70001FF42 /* TouchThroughUIView.h */,
+				02D7C3031A8A58C70001FF42 /* TouchThroughUIView.m */,
+				02D7C30A1A8A590A0001FF42 /* PaperFoldConstants.h */,
+				02D7C30E1A8A59320001FF42 /* UIView+Screenshot.h */,
+				02D7C30F1A8A59320001FF42 /* UIView+Screenshot.m */,
+			);
+			name = PaperFold;
+			sourceTree = "<group>";
+		};
+		02D7C3121A8A5A3B0001FF42 /* Center */ = {
+			isa = PBXGroup;
+			children = (
+				02D7C3131A8A5A4F0001FF42 /* HomeScreen.h */,
+				02D7C3141A8A5A4F0001FF42 /* HomeScreen.m */,
+			);
+			name = Center;
+			sourceTree = "<group>";
+		};
+		02D7C3161A8A5A540001FF42 /* Top */ = {
+			isa = PBXGroup;
+			children = (
+				02D7C3171A8A5A690001FF42 /* TopScreen.h */,
+				02D7C3181A8A5A690001FF42 /* TopScreen.m */,
+			);
+			name = Top;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,20 +455,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D7C2F91A8A56C60001FF42 /* PaperFoldView.m in Sources */,
+				02D7C3101A8A59320001FF42 /* UIView+Screenshot.m in Sources */,
 				02860DAD1A7A28340097B5EE /* Parser_Generic.m in Sources */,
 				02860DA41A7A28340097B5EE /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				02D46B671A78E501003DD180 /* ViewController.m in Sources */,
 				02860DA61A7A28340097B5EE /* TPKeyboardAvoidingTableView.m in Sources */,
+				02B37D6B1A88A4BA001F8032 /* PreLoginViewController.m in Sources */,
 				02860DA91A7A28340097B5EE /* UserDS.m in Sources */,
 				02860DA31A7A28340097B5EE /* ChangePasswordViewController.m in Sources */,
 				02860DA81A7A28340097B5EE /* validation.m in Sources */,
 				02860DB01A7A28340097B5EE /* RegisterViewController.m in Sources */,
+				02D7C3041A8A58C70001FF42 /* FacingView.m in Sources */,
+				02D7C3191A8A5A690001FF42 /* TopScreen.m in Sources */,
 				02860DB31A7A28340097B5EE /* UserProfileViewController.m in Sources */,
+				02D7C3051A8A58C70001FF42 /* MultiFoldView.m in Sources */,
 				02860DB11A7A28340097B5EE /* StaticMethods.m in Sources */,
 				02860DA51A7A28340097B5EE /* TPKeyboardAvoidingScrollView.m in Sources */,
+				02D7C3151A8A5A4F0001FF42 /* HomeScreen.m in Sources */,
 				02860DAB1A7A28340097B5EE /* LogInViewController.m in Sources */,
+				02D7C2FD1A8A56FE0001FF42 /* ContainerScreen.m in Sources */,
 				02860DA71A7A28340097B5EE /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				02D7C3091A8A58E90001FF42 /* ShadowView.m in Sources */,
+				02D7C3061A8A58C70001FF42 /* TouchThroughUIView.m in Sources */,
 				02860DAC1A7A28340097B5EE /* Parser_EditUser.m in Sources */,
+				02D7C30D1A8A59210001FF42 /* FoldView.m in Sources */,
 				02860DAF1A7A28340097B5EE /* Parser_Register.m in Sources */,
 				02860DC01A7A336F0097B5EE /* SplashViewController.m in Sources */,
 				02D46B641A78E501003DD180 /* AppDelegate.m in Sources */,

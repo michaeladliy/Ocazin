@@ -16,9 +16,10 @@
 #import "UserDS.h"
 
 
-@interface RegisterViewController ()<FBLoginViewDelegate>
+@interface RegisterViewController ()<FBLoginViewDelegate,ParserRegisterDelegate>
 {
     BOOL hasSelectImage;
+    Parser_Register *registerParser ;
 }
 @end
 
@@ -57,12 +58,16 @@
     // add padding to textfields
     passwordTxtField =[passwordTxtField addPaddingToTextField:passwordTxtField];
     usernameTxtField =[usernameTxtField addPaddingToTextField:usernameTxtField];
+    self.lastName =[self.lastName addPaddingToTextField:self.lastName];
     emailTxtField =[emailTxtField addPaddingToTextField:emailTxtField];
     phoneNoTxtField =[phoneNoTxtField addPaddingToTextField:phoneNoTxtField];
     confirmPasswordTxtField =[confirmPasswordTxtField addPaddingToTextField:confirmPasswordTxtField];
     
     // set content size for scroll View
     mainScroll.contentSize=CGSizeMake(320, 520);
+}
+- (IBAction)goBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //IBActions
 - (IBAction)registerAction:(id)sender {
@@ -85,7 +90,8 @@
     // reminde validation for image
     validation *validate=[[validation alloc] init];
     
-    [validate Required:usernameTxtField.text FieldName:@"Username"];
+    [validate Required:usernameTxtField.text FieldName:@"First name"];
+    [validate Required:self.lastName.text FieldName:@"Last name"];
     [validate Required:passwordTxtField.text FieldName:@"Password"];
     [validate Required:phoneNoTxtField.text FieldName:@"phone no"];
     [validate Required:emailTxtField.text FieldName:@"email"];
@@ -118,31 +124,9 @@
     NSString *encodedString =[imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSString *imageString =[encodedString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     
-    Parser_Register *registerParser = [[Parser_Register alloc]init];
-    [registerParser loadParserWithUsername:usernameTxtField.text password:passwordTxtField.text email:emailTxtField.text phoneNo:phoneNoTxtField.text imageString:imageString];
-    
-    if ([registerParser connectToURL]) {
-        // Done
-        if ([registerParser.messageCode isEqualToString:@"200"]) {
-            [self parserDidFinishWithSuccessWithUser:registerParser.user];
-            // Move to Home Screen
-            //            [[MyPList alloc]write:@"UserID" value:[[objectLogin.arrLogin objectAtIndex:0] stLoginID]];
-            //            [[MyPList alloc]write:@"UserName" value:txtUsername.text];
-            //            [[MyPList alloc]write:@"firstTime" value:@"NO"];
-            //            HomeScreenView *home = [[HomeScreenView alloc]initWithNibName:@"HomeScreenView" bundle:nil];
-            //            [self.navigationController pushViewController:home animated:YES];
-        }
-        else {
-            // Not Right Result
-            [StaticMethods showAlertWithTitle:@"" message:registerParser.messageText delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil ];
-        }
-    }
-    else {
-        // Error in connection
-        [StaticMethods showAlertWithTitle:@"" message:@"Connection error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil ];
-    }
-    [StaticMethods removeLoadingView];
-    
+     registerParser = [[Parser_Register alloc]init];
+    [registerParser loadParserWithFirstName:usernameTxtField.text lastName:self.lastName.text  password:passwordTxtField.text email:emailTxtField.text phoneNo:phoneNoTxtField.text imageString:imageString];
+    registerParser.delegate=self;
 }
 
 // image picker delegate methods
@@ -197,6 +181,31 @@
     }
     }];
 }
+-(void)registerParserDidFinishSuccessfullyWithUser:(UserDS *)user andMessage:(NSString *)messageCode
+{
+    
+}
+-(void)registerParserDidFinishWithError:(NSError *)connectionError
+{
+    
+    [StaticMethods showAlertWithTitle:@"" message:@"Connection Erorr" delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+    [StaticMethods removeLoadingView];
+}
+
+
+-(void)registerParserDidFinishWithValidationError:(NSArray *)validationErorrs
+{
+    NSString *allErrors = @"";
+    for (NSString *erorr in validationErorrs) {
+        allErrors= [allErrors stringByAppendingString:erorr];
+        allErrors= [allErrors stringByAppendingString:@"\n"];
+    }
+    NSLog(@"%@",allErrors);
+    [StaticMethods showAlertWithTitle:@"" message:allErrors delegate:nil cancelButtonTitle:@"OK" otherButtonTitle:nil];
+     [StaticMethods removeLoadingView];
+}
+
+
 
 -(void)parserDidFinishWithSuccessWithUser:(UserDS *)user
 {

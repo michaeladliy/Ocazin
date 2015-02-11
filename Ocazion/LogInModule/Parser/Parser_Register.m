@@ -10,57 +10,89 @@
 #import "Parser_Login.h"
 
 @implementation Parser_Register
-@synthesize user ;
+@synthesize user;
 @synthesize messageCode,messageText;
 
--(id)loadParserWithUsername:(NSString *)userName password:(NSString *)password email:(NSString*)email phoneNo:(NSString *)phoneNo imageString :(NSString *)imageString
+-(id)loadParserWithFirstName:(NSString *)firstName userName:(NSString*)userName password:(NSString *)password email:(NSString*)email phoneNo:(NSString *)phoneNo imageString :(NSString *)imageString
 {
-    currentNode = @"";
-  
-    // replace here with function 
-    NSString *fullURL = [NSString stringWithFormat:@"%@Register?username=%@&password=%@&Phone=%@&Email=%@",BASEURL,userName,password,phoneNo,email];
+    NSURL *url = [NSURL URLWithString:@"http://mahmoudnaguib.com/clients/ocazion/api/users/register"];
+    NSString *body =  [NSString stringWithFormat:@"first_name=%@&last_name=%@&email=%@&password=%@&phone=%@&main_image=%@",userName,userName,email,password,phoneNo,imageString];
     
-    fullURL = [fullURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",fullURL);
-    NSURL * NSurl =[[NSURL alloc]initWithString:fullURL];
-    parser =[[NSXMLParser alloc]initWithContentsOfURL:NSurl];
-    [parser setDelegate:self];
-    connection = [parser parse];
+    NSLog(@"striung body %@",body);
+    
+    NSMutableURLRequest *rq = [NSMutableURLRequest requestWithURL:url];
+    [rq setHTTPMethod:@"POST"];
+    [rq setTimeoutInterval:30.0f];
+    [rq setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding]];
+
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:rq queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        // call delegate method here
+        if (!connectionError) {
+            
+        
+        NSError* error;
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              
+                              options:kNilOptions
+                              error:&error];
+        
+        
+        NSLog(@"done");
+        NSLog(@"json rage3 %@",json);
+            int statusCode = [(NSHTTPURLResponse *)response statusCode] ;
+            [self parseJsonDic:json statusCode:statusCode];
+       
+}
+        
+        else
+        {
+            if ([self.delegate respondsToSelector:@selector(registerParserDidFinishWithError:)]) {
+                [self.delegate registerParserDidFinishWithError:connectionError];
+            }
+        }
+
+    }];
+    
     return self;
 }
 
--(BOOL) connectToURL
+-(void)parseJsonDic :(NSDictionary *)json statusCode:(int)statusCode
 {
-    return connection ;
-}
-
-- (void)parser :(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    NSLog(@"%@",json);
+    messageText = [json objectForKey:@"message"];
     
-    if ([elementName isEqualToString:@"User"]) {
-        user = [[UserDS alloc] init];
-        user.userID = [attributeDict objectForKey:@"Id"];
-        user.username = [attributeDict objectForKey:@"Name"];
-        user.email = [attributeDict objectForKey:@"email"];
-        user.mobileNo = [attributeDict objectForKey:@"mobileNo"];
-        user.imageURL = [attributeDict objectForKey:@"imageURL"];
+    if (statusCode == 200) {
+        // done successfully
+        user = [[UserDS alloc]init];
+        user.token= [json objectForKey:@"token"];
+        
+        if ([self.delegate respondsToSelector:@selector(registerParserDidFinishSuccessfullyWithUser:andMessage:)])
+        {
+            [self.delegate registerParserDidFinishSuccessfullyWithUser:user andMessage:messageText];
+        }
+    }else if(statusCode == 422)
+    {
+        NSArray *erorrs = [json valueForKey:@"errors"];
+        // validation erorr
+        if ([self.delegate respondsToSelector:@selector(registerParserDidFinishWithValidationError:)])
+        {
+            [self.delegate registerParserDidFinishWithValidationError:erorrs];
+        }
     }
-    if ([elementName isEqualToString:@"Message"]) {
-        messageCode = [attributeDict objectForKey:@"Code"];
-        messageText = [attributeDict objectForKey:@"Text"];
+    else
+    {
+        //erorr
+        
+        if ([self.delegate respondsToSelector:@selector(registerParserDidFinishSuccessfullyWithUser:andMessage:)])
+        {
+            [self.delegate registerParserDidFinishSuccessfullyWithUser:nil andMessage:messageText];
+        }
     }
-    currentNode = @"";
+
 }
 
-- (void)parser :(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
-    if ([elementName isEqualToString:@"User"]) {
-        // do what ever u want
-    }
-    currentNode = @"";
-}
-
-- (void)parser :(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    //    currentNode = [NSMutableString stringWithString:string];
-    currentNode = [[NSString alloc]initWithFormat:@"%@%@",currentNode , string];
-}
 
 @end
